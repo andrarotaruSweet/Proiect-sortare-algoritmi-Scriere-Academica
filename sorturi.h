@@ -12,11 +12,6 @@ void selectionSort(int *arr, int n);
 void mergeSort(int *arr, int l, int r);
 void quickSort(int *arr, int low, int high);
 
-void generateRandom(int *arr, int n);
-void generateSorted(int *arr, int n);
-void generateReverseSorted(int *arr, int n);
-void generateAlmostSorted(int *arr, int n);
-
 int isSorted(int *arr, int n);
 
 #endif
