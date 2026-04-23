@@ -1,51 +1,77 @@
 #include "sorturi.h"
 
-void run_test(const char* name, void (*sort_func)(int*, int), int *data, int n) 
+void test_file(const char* filename) 
 {
-    int *copy = (int*)malloc(n * sizeof(int));
-    memcpy(copy, data, n * sizeof(int));
-
-    clock_t start = clock();
-    if (strcmp(name, "MergeSort") == 0) mergeSort(copy, 0, n - 1);
-    else if (strcmp(name, "QuickSort") == 0) quickSort(copy, 0, n - 1);
-    else sort_func(copy, n);
-    clock_t end = clock();
-
-    double time_spent = (double)(end - start)/ CLOCKS_PER_SEC;
-    
-    if (isSorted(copy, n)) {
-        printf("%-15s  N=%-7d  Timp: %f sec\n", name, n, time_spent);
-    } else {
-        printf("%-15s  N=%-7d  EROARE SORTARE\n", name, n);
+    FILE* f = fopen(filename, "r");
+    if (!f) return;
+    int n;
+    if (fscanf(f, "%d", &n) != 1) 
+    {
+         fclose(f);
+          return; 
     }
+    int *original = malloc(n*sizeof(int));
+    for (int i = 0; i<n; i++)
+        fscanf(f, "%d", &original[i]);
+    fclose(f);
 
-    free(copy);
+    printf("\nFisier: %s (N=%d)\n", filename, n);
+    const char* names[] = {"Bubble", "Insertion", "Selection", "MergeSort", "QuickSort"};
+    
+    for (int i=0; i<5; i++) 
+    {
+        if (n > 20000 && i< 3) 
+            continue;
+        int *copy = malloc(n*sizeof(int));
+        memcpy(copy, original, n*sizeof(int));
+
+        clock_t start = clock();
+        if (i == 0) bubbleSort(copy, n);
+        else if (i == 1) insertionSort(copy, n);
+        else if (i == 2) selectionSort(copy, n);
+        else if (i == 3) mergeSort(copy, 0, n - 1);
+        else if (i == 4) quickSort(copy, 0, n - 1);
+        clock_t end = clock();
+
+        double time_spent = (double)(end - start) / CLOCKS_PER_SEC;
+        printf("Algoritm: %s, Timp: %f secunde, Status: %s\n", names[i], time_spent, isSorted(copy, n) ? "OK" : "FAIL");
+        free(copy);
+    }
+    free(original);
 }
 
 int main() 
 {
-    srand(time(NULL));
-    int sizes[] = {100, 1000, 10000, 50000};
-    int num_sizes = sizeof(sizes) / sizeof(sizes[0]);
+    test_file("rand_100.txt");
+    test_file("sort_100.txt");
+    test_file("inv_100.txt");
+    test_file("quasi_100.txt");
+    test_file("flat_100.txt");
 
-    for (int i = 0; i < num_sizes; i++) 
-    {
-        int n = sizes[i];
-        int *data = (int*)malloc(n * sizeof(int));
-        
-        printf("\nTestare pentru N = % d \n", n);
-        generateRandom(data, n);
-
-        if (n <= 10000) 
-        {
-            run_test("BubbleSort", bubbleSort, data, n);
-            run_test("InsertionSort", insertionSort, data, n);
-        }
-        run_test("MergeSort", NULL, data, n);
-        run_test("QuickSort", NULL, data, n);
-
-        free(data);
-    }
+    test_file("rand_1000.txt");
+    test_file("sort_1000.txt");
+    test_file("inv_1000.txt");
+    test_file("quasi_1000.txt");
+    test_file("flat_1000.txt");
+   
+    test_file("rand_10000.txt");
+    test_file("sort_10000.txt");
+    test_file("inv_10000.txt");
+    test_file("quasi_10000.txt");
+    test_file("flat_10000.txt");
+   
+    test_file("rand_100000.txt");
+    //test_file("sort_100000.txt"); 
+    //test_file("inv_100000.txt");    
+    //test_file("quasi_100000.txt");   
+    //test_file("flat_100000.txt");     
+   
+   //teste mari
+    test_file("rand_1000000.txt");
+   //test_file("sort_1000000.txt"); 
+    //test_file("inv_1000000.txt");  
+    //test_file("quasi_1000000.txt");
+    test_file("flat_1000000.txt");
 
     return 0;
 }
