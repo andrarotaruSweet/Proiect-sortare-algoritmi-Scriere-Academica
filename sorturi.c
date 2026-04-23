@@ -86,7 +86,7 @@ void quickSort(int *arr, int low, int high)
         quickSort(arr, pi + 1, high);
     }
 }
-
+/*
 void generateRandom(int *arr, int n)
 {
     for (int i = 0; i < n; i++) arr[i] = rand() % 100000;
@@ -102,7 +102,7 @@ void isSortedCheck(int *arr, int n)
     for (int i = 0; i < n - 1; i++)
         if (arr[i] > arr[i + 1]) return;
 }
-
+*/
 int isSorted(int *arr, int n) 
 {
     for (int i = 0; i < n - 1; i++)
