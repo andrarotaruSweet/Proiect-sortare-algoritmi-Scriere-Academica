@@ -1,0 +1,61 @@
+ >>> Fisier: rand_100.txt (N=100)
+
+   Bubble      : 0.000000 sec | OK
+   Insertion   : 0.000000 sec | OK
+   Selection   : 0.000000 sec | OK
+   MergeSort   : 0.000000 sec | OK
+   QuickSort   : 0.000000 sec | OK
+
+
+>>> Fisier: rand_1000.txt (N=1000)
+
+   Bubble      : 0.003000 sec | OK
+   Insertion   : 0.001000 sec | OK
+   Selection   : 0.001000 sec | OK
+   MergeSort   : 0.000000 sec | OK
+   QuickSort   : 0.000000 sec | OK
+
+
+>>> Fisier: rand_10000.txt (N=10000)
+
+   Bubble      : 0.237000 sec | OK
+   Insertion   : 0.055000 sec | OK
+   Selection   : 0.099000 sec | OK
+   MergeSort   : 0.002000 sec | OK
+   QuickSort   : 0.001000 sec | OK
+
+
+>>> Fisier: sort_10000.txt (N=10000)
+
+   Bubble      : 0.092000 sec | OK
+   Insertion   : 0.000000 sec | OK
+   Selection   : 0.098000 sec | OK
+   MergeSort   : 0.002000 sec | OK
+   QuickSort   : 0.226000 sec | OK
+
+
+>>> Fisier: inv_10000.txt (N=10000)
+
+   Bubble      : 0.224000 sec | OK
+   Insertion   : 0.110000 sec | OK
+   Selection   : 0.093000 sec | OK
+   MergeSort   : 0.002000 sec | OK
+   QuickSort   : 0.164000 sec | OK
+
+
+>>> Fisier: quasi_10000.txt (N=10000)
+
+   Bubble      : 0.112000 sec | OK
+   Insertion   : 0.007000 sec | OK
+   Selection   : 0.096000 sec | OK
+   MergeSort   : 0.002000 sec | OK
+   QuickSort   : 0.002000 sec | OK
+
+
+>>> Fisier: flat_10000.txt (N=10000)
+
+   Bubble      : 0.232000 sec | OK
+   Insertion   : 0.048000 sec | OK
+   Selection   : 0.101000 sec | OK
+   MergeSort   : 0.002000 sec | OK
+   QuickSort   : 0.010000 sec | OK 
